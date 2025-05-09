@@ -294,7 +294,10 @@ Relations entre les classes
     Bike : contient une instance de Person pour gérer l'affichage de la personne qui conduit le vélo.
 
     Obstacle: est une classe autonome qui gère l'apparition et le mouvement des obstacles.
-    
+
+
+#Principe de jeu:
+
 
 
 
