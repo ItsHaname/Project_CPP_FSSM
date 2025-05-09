@@ -1,7 +1,7 @@
 #include "Person.h"
 
 Person::Person() {
-    texture = LoadTexture("/home/hananeaitbah/Project_CPP_FSSM/class/file_000000005978620aaba046ed841eafe2.png");  // Assure-toi que le chemin est correct
+    texture = LoadTexture("/home/hananeaitbah/Project_CPP_FSSM/file_000000005978620aaba046ed841eafe2.png");  // Assure-toi que le chemin est correct
     width = (float)texture.width;
     height = (float)texture.height;
 }

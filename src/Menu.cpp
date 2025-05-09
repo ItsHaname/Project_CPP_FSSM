@@ -17,7 +17,7 @@ void Menu::Update() {
 
 void Menu::Draw() {
     // Charger les ressources
-    Texture2D background = LoadTexture("/home/hananeaitbah/Project_CPP_FSSM/class/Capture d’écran du 2025-04-29 19-00-29.png");
+    Texture2D background = LoadTexture("/home/hananeaitbah/Project_CPP_FSSM/Capture d’écran du 2025-04-29 19-00-29.png");
     Font boldFont = LoadFont("Roboto-Bold.ttf");  // Assure-toi que ce fichier existe
 
     BeginDrawing();
