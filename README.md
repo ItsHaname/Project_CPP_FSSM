@@ -199,13 +199,16 @@ Ce projet de jeu a été réalisé en collaboration entre [ItsHaname](https://gi
  # Stucture de projet :
 ```
 ├── assets/ # Sprites, sons et textures
+
 ├── bin/ # Exécutable (monJeu)
+
 ├── include/ # Headers (.h)
 │ ├── Bike.h # Déclarations des classes et fonctions pour Bike
 │ ├── Game.h # Déclarations des classes et fonctions pour Game
 │ ├── Menu.h # Déclarations des classes et fonctions pour Menu
 │ ├── Obstacle.h # Déclarations des classes et fonctions pour Obstacle
 │ └── Person.h # Déclarations des classes et fonctions pour Person
+
 └── src/ # Code source (.cpp)
 ├── Bike.cpp # Gestion du vélo (mouvement, interactions)
 ├── Game.cpp # Logique principale du jeu, gestion des événements
@@ -213,7 +216,99 @@ Ce projet de jeu a été réalisé en collaboration entre [ItsHaname](https://gi
 ├── Menu.cpp # Gestion du menu du jeu
 ├── Obstacle.cpp # Gestion des obstacles (apparition, collisions)
 └── Person.cpp # Gestion du personnage (réactions, contrôles)
+
 ```
+
+1. Compiler le projet:
+```
+   g++ -o bin/monJeu src/*.cpp -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+```
+2. Exécuter le projet
+   ```
+   ./bin/monJeu
+  ``
+  # #Modelisation et conception:
+  ```
++------------------+            +-----------------+           +-----------------+
+|      Game        |<>----------|      Bike       |<>---------|    Person       |
++------------------+            +-----------------+           +-----------------+
+| - bike           |            | - x, y          |           | - texture       |
+| - obstacle       |            | - speed         |           | - width, height |
+| - menu           |            | - person        |           |                 |
+| - gameOver       |            | + Update()      |           | + Draw()        |
+| - win            |            | + Draw()        |           +-----------------+
+| - timer          |            | + GetRect()     |
+| - moneyPos       |            | + GetSeatPos()  |
+| - moneyWidth     |            +-----------------+
+| - moneyHeight    |
++------------------+
+         |
+         | 1
+         |
+         v
++-------------------+
+|    Obstacle       |
++-------------------+
+| - x, y            |
+| - width, height   |
+| - speed           |
+| + Update()        |
+| + Draw()          |
+| + GetRect()       |
++-------------------+
+         |
+         |
+         v
++-------------------+
+|       Menu        |
++-------------------+
+| - isPlaying       |
+| - shouldQuit      |
+| + Update()        |
+| + Draw()          |
+| + IsPlaying()     |
+| + ShouldQuit()    |
++-------------------+
+
+```
+
+2. Diagramme de classes
+
+Le diagramme de classes est une excellente façon de visualiser les relations entre les différentes entités du projet.
+Classes principales
+
+    Bike : Représente le vélo, sa position, sa vitesse, et la personne qui le conduit.
+
+    Person : Représente la personne sur le vélo (une image).
+
+    Obstacle : Représente les obstacles que le vélo doit éviter.
+
+    Game : La logique du jeu, gère les objets principaux (Bike, Obstacle, Menu), et contrôle l'état du jeu.
+
+    Menu : Le menu du jeu qui permet au joueur de commencer ou de quitter le jeu.
+
+Relations entre les classes
+
+    Game: contient un Bike, un Obstacle, un Menu, et un Person.
+
+    Bike : contient une instance de Person pour gérer l'affichage de la personne qui conduit le vélo.
+
+    Obstacle: est une classe autonome qui gère l'apparition et le mouvement des obstacles.
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
