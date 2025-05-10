@@ -296,7 +296,27 @@ Relations entre les classes
     Obstacle: est une classe autonome qui gère l'apparition et le mouvement des obstacles.
 
 
-#Principe de jeu:
+# 🎮 Principe du jeu
+
+Au lancement du programme, un **menu principal** s'affiche proposant deux options :
+- **Jouer** (en appuyant sur `Entrée`)
+- **Quitter** (en appuyant sur `Échap` ou `Espace`)
+
+---
+
+### 🕹️ Déroulement du jeu
+
+- Une fois la partie lancée, un **cycliste sur un vélo** se déplace **horizontalement** à l’écran.
+- Le joueur doit **éviter les obstacles** qui apparaissent aléatoirement.
+- Le but est de **survivre jusqu'à la fin du chronomètre** sans entrer en collision avec les obstacles.
+
+---
+
+## 🖼️ Aperçu du jeu
+
+![Capture du jeu](https://github.com/ItsHaname/Project_CPP_FSSM/blob/main/assets/Capture%20d%E2%80%99%C3%A9cran%20du%202025-04-29%2019-00-29.png)
+
+---
 
 
 
