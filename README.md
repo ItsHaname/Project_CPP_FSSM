@@ -319,6 +319,259 @@ Au lancement du programme, un **menu principal** s'affiche proposant deux option
 
 ----
 
+## Description et rôle dans le jeu:
+
+
+# 🧩 Classe `Bike` – Description et rôle dans le jeu
+
+La classe `Bike` est un composant essentiel du projet. Elle représente le **vélo du joueur** dans le jeu et gère plusieurs responsabilités :
+
+- Le **déplacement** du cycliste avec le clavier.
+- L’**affichage** graphique du vélo et de son conducteur.
+- La **gestion des collisions** avec les bords de l'écran.
+- L’**intégration** du personnage `Person` sur le vélo.
+
+---
+
+## 📦 Attributs principaux
+
+- `float x, y` : Position du vélo sur l’écran.
+- `float width, height` : Dimensions du vélo.
+- `float speed` : Vitesse de déplacement du vélo.
+- `Person person` : Objet représentant le cycliste.
+
+---
+
+## ⚙️ Méthodes principales
+
+### `Bike::Bike()`
+Initialise la position, la taille et la vitesse du vélo.
+
+### `void Update()`
+Gère les entrées clavier (`flèches`) pour déplacer le vélo. Empêche aussi le vélo de sortir des limites de l’écran.
+
+### `void Draw()`
+Affiche le vélo à l'écran :
+- Les roues (cercles),
+- Les rayons (lignes),
+- Le cadre (lignes),
+- Le personnage (avec la classe `Person`).
+
+### `Rectangle GetRect()`
+Retourne un rectangle qui encadre le vélo, utile pour détecter les **collisions**.
+
+### `Vector2 GetSeatPosition()`
+Renvoie la position du **siège** du vélo, pour y placer correctement le cycliste.
+
+---
+
+## ✅ Résumé simplifié
+
+| Élément                | Rôle                                                 |
+|------------------------|------------------------------------------------------|
+| `Bike`                 | Gère le cycliste (position, affichage, mouvement)    |
+| `Update()`             | Déplace le vélo avec le clavier                      |
+| `Draw()`               | Affiche un vélo complet avec le personnage           |
+| `GetRect()`            | Donne la zone pour détecter les collisions           |
+| `GetSeatPosition()`    | Positionne la personne sur le siège                  |
+
+---
+# 👤 Classe `Person` – Cycliste du jeu
+
+La classe `Person` représente le **personnage** (cycliste) qui monte sur le vélo dans le jeu. Elle est utilisée principalement par la classe `Bike` pour afficher le joueur à l’écran.
+
+---
+
+## 🎯 Objectif
+
+- Charger une **texture d’image** représentant le cycliste.
+- Afficher le personnage sur le **siège du vélo**.
+- Gérer le **déchargement de la texture** pour libérer la mémoire.
+
+---
+
+## 📦 Attributs
+
+| Attribut         | Description                                      |
+|------------------|--------------------------------------------------|
+| `float width`    | Largeur de la texture du personnage              |
+| `float height`   | Hauteur de la texture du personnage              |
+| `Texture2D texture` | Texture contenant l’image du cycliste chargée |
+
+---
+
+## ⚙️ Méthodes
+
+### `Person()`
+- Charge une image (texture) du personnage à partir d’un chemin local.
+- Calcule la largeur et la hauteur à partir de la texture.
+
+> 📝 **Important** : Le chemin vers l’image doit être valide. Exemple utilisé :
+```cpp
+LoadTexture("/home/kari/Project_CPP_FSSM/file_000000005978620aaba046ed841eafe2.png");
+```
+
+![image](https://github.com/user-attachments/assets/a92d3da8-c3b3-46e8-bc2c-4bb6a5d5c78e)
+
+# 🟥 Classe `Obstacle` – Événements à éviter
+
+La classe `Obstacle` représente les **obstacles** que le joueur doit éviter pendant la partie. Ce sont des **barres rouges verticales** qui se déplacent horizontalement à l’écran.
+
+---
+
+## 🎯 Objectif
+
+- Générer des obstacles avec une **position verticale aléatoire**.
+- Les faire **se déplacer vers la gauche** pour simuler le mouvement.
+- Les **réinitialiser automatiquement** lorsqu’ils quittent l’écran.
+- Fournir une **forme géométrique** pour la détection de collision.
+
+---
+
+## 📦 Attributs
+
+| Attribut         | Description                                                      |
+|------------------|------------------------------------------------------------------|
+| `float x`        | Position horizontale de l’obstacle                               |
+| `float y`        | Position verticale de l’obstacle                                 |
+| `float width`    | Largeur (20 pixels)                                              |
+| `float height`   | Hauteur (150 pixels)                                             |
+| `float speed`    | Vitesse de déplacement vers la gauche (6 pixels/frame par défaut) |
+
+---
+
+## ⚙️ Méthodes
+
+### `Obstacle(float startX)`
+- Initialise l’obstacle à la position horizontale `startX`.
+- Place l’obstacle à une **position verticale aléatoire** dans l’écran :
+```cpp
+y = GetRandomValue(0, GetScreenHeight() - (int)height);
+```
+
+oid Update()
+
+    Déplace l’obstacle vers la gauche (x -= speed).
+
+    Si l’obstacle sort de l’écran à gauche, il est recyclé à droite avec une nouvelle position verticale aléatoire :
+
+if (x + width < 0) {
+    x = GetScreenWidth();
+    y = GetRandomValue(0, GetScreenHeight() - (int)height);
+}
+
+void Draw()
+
+    Dessine un rectangle rouge représentant visuellement l’obstacle :
+
+DrawRectangle(x, y, width, height, RED);
+
+Rectangle GetRect()
+
+    Retourne un rectangle utile pour la détection de collision.
+    
+
+![image](https://github.com/user-attachments/assets/ef1f17ac-9ee7-4da1-932f-e3f541e730ec)
+
+# 🎮 Classe `Menu` – Menu Principal du Jeu
+
+La classe `Menu` gère l'affichage et la logique du **menu principal** du jeu. Elle permet au joueur de choisir s’il veut commencer une partie ou quitter le jeu.
+
+---
+
+## 📌 Objectif
+
+- Afficher un écran d’accueil avec une image de fond et du texte.
+- Réagir aux **touches clavier** :
+  - `ENTRÉE` → Commencer à jouer.
+  - `ECHAP` ou `ESPACE` → Quitter le jeu.
+
+---
+
+## 📦 Attributs
+
+| Attribut        | Description                                          |
+|------------------|------------------------------------------------------|
+| `bool isPlaying` | Indique si le joueur a choisi de lancer le jeu.     |
+| `bool shouldQuit`| Indique si le joueur souhaite quitter le jeu.       |
+
+---
+
+## ⚙️ Méthodes
+
+### `Menu()`
+- Initialise `isPlaying` et `shouldQuit` à `false`.
+
+---
+
+### `void Update()`
+- Surveille les **touches clavier** pour mettre à jour l’état du menu :
+```cpp
+if (IsKeyPressed(KEY_ENTER))       isPlaying = true;
+if (IsKeyPressed(KEY_ESCAPE) || IsKeyPressed(KEY_SPACE)) shouldQuit = true;
+```
+
+![image](https://github.com/user-attachments/assets/1aa49910-310c-4eaf-b8b7-dbfcdd5f698d)
+
+---
+## 🛠️ **Fichiers Principaux**
+
+### **1. Fichier `Game.cpp`**
+
+Le fichier `Game.cpp` contient la classe `Game`, qui gère la logique du jeu, y compris les éléments du jeu, les conditions de victoire et de défaite, ainsi que l'affichage des informations à l'écran.
+
+#### **Détails de la classe `Game`**
+
+- **Attributs** :
+  - `Bike bike` : Le vélo contrôlé par le joueur.
+  - `Obstacle obstacle` : Les obstacles à éviter dans le jeu.
+  - `Menu menu` : Le menu principal du jeu (l'écran d'accueil).
+  - `bool gameOver` : Indique si la partie est terminée.
+  - `bool win` : Indique si le joueur a gagné.
+  - `int timer` : Le temps restant avant la fin du jeu.
+  - `int framesCounter` : Un compteur qui sert à gérer le temps du jeu.
+  - `Vector2 moneyPos` : La position du carré jaune (argent) à récupérer.
+  - `int moneyWidth` et `int moneyHeight` : La taille du carré jaune.
+
+- **Méthodes principales** :
+  - **`Update()`** : Met à jour l'état du jeu à chaque frame. Cela inclut :
+    - Vérifier si le joueur a perdu ou gagné.
+    - Mettre à jour la position du vélo et de l'obstacle.
+    - Gérer le temps restant.
+    - Vérifier les collisions.
+  - **`Draw()`** : Affiche à l'écran les éléments du jeu :
+    - Le vélo, les obstacles, et le carré jaune (si le temps le permet).
+    - Le temps restant, et un message de victoire ou de défaite lorsque le jeu est terminé.
+  - **`Reset()`** : Réinitialise les paramètres du jeu pour recommencer une nouvelle partie.
+
+### **2. Fichier `main.cpp`**
+
+Le fichier `main.cpp` est le point d'entrée du programme. C'est ici que le jeu commence.
+
+#### **Détails de `main.cpp`**
+
+- **Initialisation de la fenêtre** :
+  - La fenêtre du jeu est créée avec les dimensions définies (800x450 pixels).
+  - Le titre de la fenêtre est défini sur "Jeu de course de vélo 🚲 - Raylib C++".
+  - Le jeu fonctionne à 60 images par seconde (FPS).
+
+- **Boucle de jeu** :
+  - La boucle `while (!WindowShouldClose())` est l'endroit où le jeu se met à jour et se dessine en continu.
+  - À chaque itération de la boucle, la méthode `game.Update()` est appelée pour mettre à jour l'état du jeu.
+  - Ensuite, la méthode `game.Draw()` est appelée pour afficher les éléments du jeu à l'écran.
+
+- **Fermeture de la fenêtre** :
+  - Quand l'utilisateur ferme la fenêtre, la fonction `CloseWindow()` est appelée pour nettoyer et fermer correctement la fenêtre du jeu.
+
+---
+
+
+
+
+
+
+
+
 
 
 
