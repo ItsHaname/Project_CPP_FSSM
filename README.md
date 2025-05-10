@@ -72,6 +72,8 @@ Un jeu 2D simple et amusant créé en C++ avec Raylib. Vous contrôlez un cyclis
 
 ----
 # 🧠 Pourquoi avons-nous choisi la bibliothèque raylib ?
+![image](https://github.com/user-attachments/assets/ce1ff0e0-22e7-48a9-8f6c-d3bd69ccc84f)
+
 
 Nous avons choisi **raylib** pour plusieurs raisons :
 
