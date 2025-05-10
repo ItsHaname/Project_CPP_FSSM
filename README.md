@@ -314,11 +314,10 @@ Au lancement du programme, un **menu principal** s'affiche proposant deux option
 
 ## 🖼️ Aperçu du jeu
 
-![Capture du jeu](https://github.com/ItsHaname/Project_CPP_FSSM/blob/main/assets/Capture%20d%E2%80%99%C3%A9cran%20du%202025-04-29%2019-00-29.png)
 
----
+![image](https://github.com/user-attachments/assets/a5b25980-3555-4cc5-9f27-296e90aa7017)
 
-
+----
 
 
 
