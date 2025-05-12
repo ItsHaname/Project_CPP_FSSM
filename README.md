@@ -46,6 +46,7 @@
 
 ----
 # 🚴 Jeu du Cycliste - Évitez les Obstacles !
+[▶️ Voir la vidéo de démonstration](https://github.com/ItsHaname/Project_CPP_FSSM/blob/main/assets/WhatsApp%20Video%202025-05-12%20at%2004.58.39.mp4)
 
 Un jeu 2D simple et amusant créé en C++ avec Raylib. Vous contrôlez un cycliste et vous devez éviter les obstacles pour aller le plus loin possible !
 
