@@ -566,4 +566,4 @@ Le fichier `main.cpp` est le point d'entrée du programme. C'est ici que le jeu 
 - **Fermeture de la fenêtre** :
   - Quand l'utilisateur ferme la fenêtre, la fonction `CloseWindow()` est appelée pour nettoyer et fermer correctement la fenêtre du je
 
-by Hanane
+by Hanane & Karima 
