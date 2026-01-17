@@ -564,32 +564,6 @@ Le fichier `main.cpp` est le point d'entrée du programme. C'est ici que le jeu 
   - Ensuite, la méthode `game.Draw()` est appelée pour afficher les éléments du jeu à l'écran.
 
 - **Fermeture de la fenêtre** :
-  - Quand l'utilisateur ferme la fenêtre, la fonction `CloseWindow()` est appelée pour nettoyer et fermer correctement la fenêtre du jeu.
+  - Quand l'utilisateur ferme la fenêtre, la fonction `CloseWindow()` est appelée pour nettoyer et fermer correctement la fenêtre du je
 
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+by Hanane & Karima 
